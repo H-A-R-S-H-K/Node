@@ -1,38 +1,41 @@
 const fs = require('fs');
 //Read File
-// fs.readFileSync('./file.txt', 'utf-8', (err, data) => {
-//     if (err) {
-//         console.error(err);
-//         return;
-//     }
-//     console.log(data);
-// });
+fs.readFileSync('./file.txt', 'utf-8', (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log(data);
+});
+
+let newText = " Game Off";
+//Write File
+fs.writeFileSync('./file.txt', newText);
 
 //Append Text
-// let newText = " Game Off";
-// fs.appendFileSync('./file.txt', newText, (err, data) => {
-//     if (err) {
-//         console.error(err);
-//         return;
-//     }
-// })
+fs.appendFileSync('./file.txt', newText, (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+})
 
 //Make Directory
-// fs.mkdir('dir1', (err) => {
-//     if (err)
-//         console.error(err);
-//     console.log('dir formed');
-// })
+fs.mkdir('dir1', (err) => {
+    if (err)
+        console.error(err);
+    console.log('dir formed');
+})
 
 //Remove Directory
-// fs.rmdir('dir1', () => {
-//     console.log('dir removed');
-// })
+fs.rmdir('dir1', () => {
+    console.log('dir removed');
+})
 
 //Rename File
-// fs.rename('file.txt', 'newFile.txt', () => {
-//     console.log('File name changed');
-// })
+fs.rename('file.txt', 'newFile.txt', () => {
+    console.log('File name changed');
+})
 
 // const p = "/Users/harshkumar/Desktop/node/newFile.txt";
 // const path = require("path");
@@ -45,15 +48,17 @@ const fs = require('fs');
 
 
 //Get current dir and file path
-// console.log("Directory = " + __dirname + " Filename = " + __filename);
+console.log("Directory = " + __dirname + " Filename = " + __filename);
+
 
 //copy file from src to dest
+const source = __dirname + "/copy.txt";
+const destination = __dirname + "/newFile.txt";
+fs.copyFileSync(source, destination);
+fs.unlinkSync('newFile.txt');
 
-// const source = __dirname + "/copy.txt";
-// const destination = __dirname + "/newFile.txt";
-// fs.copyFileSync(source, destination);
-// fs.unlinkSync('newFile.txt');
 
+//Server
 const http = require('http');
 
 const server = http.createServer((req, res) => {
